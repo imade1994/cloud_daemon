@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.tj.cloud</groupId>
+        <artifactId>cloud-daemon</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>cloud-common</artifactId>
+    <packaging>pom</packaging>
+
+    <description>cloud 公共模块</description>
+
+    <modules>
+        <module>cloud-common-bom</module>
+        <module>cloud-common-core</module>
+        <module>cloud-common-db</module>
+        <module>cloud-common-feign</module>
+        <module>cloud-common-gateway</module>
+        <module>cloud-common-job</module>
+        <module>cloud-common-log</module>
+        <module>cloud-common-mybatis</module>
+        <module>cloud-common-oss</module>
+        <module>cloud-common-redis</module>
+        <module>cloud-common-seata</module>
+        <module>cloud-common-security</module>
+        <module>cloud-common-swagger</module>
+        <module>cloud-common-xss</module>
+    </modules>
+
+</project>

@@ -29,101 +29,100 @@ import java.util.Map;
 @Component
 public class ApplicationUtils implements ApplicationContextAware {
 
-    protected static final Logger LOGGER = LoggerFactory.getLogger(ApplicationUtils.class);
+	protected static final Logger LOGGER = LoggerFactory.getLogger(ApplicationUtils.class);
 
+	private static ApplicationContext context;
 
-    private static ApplicationContext context;
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+		ApplicationUtils.context = applicationContext;
+	}
 
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        ApplicationUtils.context = applicationContext;
-    }
+	/**
+	 * 获取spring容器上下文。
+	 * @return ApplicationContext
+	 */
+	public static ApplicationContext getApplicationContext() {
+		return context;
+	}
 
-    /**
-     * 获取spring容器上下文。
-     *
-     * @return ApplicationContext
-     */
-    public static ApplicationContext getApplicationContext() {
-        return context;
-    }
+	/**
+	 * 根据beanId获取配置在系统中的对象实例。
+	 */
+	public static Object getBean(String beanId) {
+		try {
+			return context.getBean(beanId);
+		}
+		catch (Exception ex) {
+			LOGGER.debug("getBean:" + beanId + "," + ex.getMessage());
+		}
+		return null;
+	}
 
-    /**
-     * 根据beanId获取配置在系统中的对象实例。
-     */
-    public static Object getBean(String beanId) {
-        try {
-            return context.getBean(beanId);
-        } catch (Exception ex) {
-            LOGGER.debug("getBean:" + beanId + "," + ex.getMessage());
-        }
-        return null;
-    }
+	/**
+	 * 获取Spring容器的Bean
+	 */
+	public static <T> T getBean(Class<T> beanClass) {
+		try {
+			return context.getBean(beanClass);
+		}
+		catch (Exception ex) {
+			LOGGER.debug("getBean:" + beanClass + "," + ex.getMessage());
+		}
+		return null;
+	}
 
-    /**
-     * 获取Spring容器的Bean
-     */
-    public static <T> T getBean(Class<T> beanClass) {
-        try {
-            return context.getBean(beanClass);
-        } catch (Exception ex) {
-            LOGGER.debug("getBean:" + beanClass + "," + ex.getMessage());
-        }
-        return null;
-    }
+	/**
+	 * 获取接口的实现类实例。
+	 */
+	public static <T> Map<String, T> getImplInstance(Class<T> clazz) {
+		return context.getBeansOfType(clazz);
+	}
 
+	public static <T> List<T> getImplInstanceArray(Class<T> clazz) {
+		List<T> list = new ArrayList<>();
 
-    /**
-     * 获取接口的实现类实例。
-     */
-    public static <T> Map<String, T> getImplInstance(Class<T> clazz) {
-        return context.getBeansOfType(clazz);
-    }
+		Map<String, T> map = context.getBeansOfType(clazz);
 
-    public static <T> List<T> getImplInstanceArray(Class<T> clazz) {
-        List<T> list = new ArrayList<>();
+		for (T t : map.values()) {
+			list.add(t);
+		}
+		return list;
+	}
 
-        Map<String, T> map = context.getBeansOfType(clazz);
+	/**
+	 * 发布事件
+	 */
+	public static void publishEvent(ApplicationEvent event) {
+		if (context != null) {
+			context.publishEvent(event);
+		}
+	}
 
-        for (T t : map.values()) {
-            list.add(t);
-        }
-        return list;
-    }
+	/**
+	 * 获取当前系统环境<br>
+	 * 目前仅支持单一环境配置。请勿配置多个参数 dev sit 之类。 环境配置的判断参考下面代码<br>
+	 * doGetActiveProfiles().contains(profile) || (doGetActiveProfiles().isEmpty() &&
+	 * doGetDefaultProfiles().contains(profile))
+	 */
+	private static String currentProfiles = null;
 
+	public static String getCtxEnvironment() {
+		if (currentProfiles != null) {
+			return currentProfiles;
+		}
+		Environment environment = context.getEnvironment();
+		String[] activeProfiles = environment.getActiveProfiles();
+		if (ArrayUtil.isNotEmpty(activeProfiles)) {
+			currentProfiles = activeProfiles[0];
+			return currentProfiles;
+		}
+		String[] defaultProfiles = environment.getDefaultProfiles();
+		if (ArrayUtil.isNotEmpty(defaultProfiles)) {
+			currentProfiles = defaultProfiles[0];
+			return defaultProfiles[0];
+		}
+		throw new BusinessException("查找不到正确的环境属性配置！", BaseStatusCodeEnum.SYSTEM_ERROR);
+	}
 
-    /**
-     * 发布事件
-     */
-    public static void publishEvent(ApplicationEvent event) {
-        if (context != null) {
-            context.publishEvent(event);
-        }
-    }
-
-
-    /**
-     * 获取当前系统环境<br>
-     * 目前仅支持单一环境配置。请勿配置多个参数 dev sit 之类。 环境配置的判断参考下面代码<br>
-     * doGetActiveProfiles().contains(profile) || (doGetActiveProfiles().isEmpty() && doGetDefaultProfiles().contains(profile))
-     */
-    private static String currentProfiles = null;
-
-    public static String getCtxEnvironment() {
-        if (currentProfiles != null) {
-            return currentProfiles;
-        }
-        Environment environment = context.getEnvironment();
-        String[] activeProfiles = environment.getActiveProfiles();
-        if (ArrayUtil.isNotEmpty(activeProfiles)) {
-            currentProfiles = activeProfiles[0];
-            return currentProfiles;
-        }
-        String[] defaultProfiles = environment.getDefaultProfiles();
-        if (ArrayUtil.isNotEmpty(defaultProfiles)) {
-            currentProfiles = defaultProfiles[0];
-            return defaultProfiles[0];
-        }
-        throw new BusinessException("查找不到正确的环境属性配置！", BaseStatusCodeEnum.SYSTEM_ERROR);
-    }
 }

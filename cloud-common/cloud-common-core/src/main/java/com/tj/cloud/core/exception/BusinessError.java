@@ -4,7 +4,6 @@
  */
 package com.tj.cloud.core.exception;
 
-
 import com.tj.cloud.core.enumeration.BaseStatusCodeEnum;
 import com.tj.cloud.core.idal.IStatusCode;
 
@@ -16,47 +15,46 @@ import com.tj.cloud.core.idal.IStatusCode;
  */
 public class BusinessError extends RuntimeException {
 
-    public IStatusCode statusCode = BaseStatusCodeEnum.SYSTEM_ERROR;
+	public IStatusCode statusCode = BaseStatusCodeEnum.SYSTEM_ERROR;
 
-    public BusinessError(String msg) {
-        super(msg);
-    }
+	public BusinessError(String msg) {
+		super(msg);
+	}
 
-    public BusinessError(String msg, Throwable throwable) {
-        super(msg, throwable);
-    }
+	public BusinessError(String msg, Throwable throwable) {
+		super(msg, throwable);
+	}
 
-    public BusinessError(Throwable throwable) {
-        super(throwable);
-    }
+	public BusinessError(Throwable throwable) {
+		super(throwable);
+	}
 
-    public BusinessError(String msg, IStatusCode errorCode) {
-        super(msg);
-        this.statusCode = errorCode;
-    }
+	public BusinessError(String msg, IStatusCode errorCode) {
+		super(msg);
+		this.statusCode = errorCode;
+	}
 
-    public BusinessError(IStatusCode errorCode) {
-        super(errorCode.getDesc());
-        this.statusCode = errorCode;
-    }
+	public BusinessError(IStatusCode errorCode) {
+		super(errorCode.getDesc());
+		this.statusCode = errorCode;
+	}
 
-    public BusinessError(IStatusCode errorCode, Throwable throwable) {
-        super(errorCode.getDesc(), throwable);
-        this.statusCode = errorCode;
-    }
+	public BusinessError(IStatusCode errorCode, Throwable throwable) {
+		super(errorCode.getDesc(), throwable);
+		this.statusCode = errorCode;
+	}
 
-    public BusinessError(String msg, IStatusCode errorCode, Throwable throwable) {
-        super(errorCode.getDesc() + ":" + msg, throwable);
-        this.statusCode = errorCode;
-    }
+	public BusinessError(String msg, IStatusCode errorCode, Throwable throwable) {
+		super(errorCode.getDesc() + ":" + msg, throwable);
+		this.statusCode = errorCode;
+	}
 
+	public IStatusCode getStatusCode() {
+		return statusCode;
+	}
 
+	public void setStatusCode(IStatusCode statusCode) {
+		this.statusCode = statusCode;
+	}
 
-    public IStatusCode getStatusCode() {
-        return statusCode;
-    }
-
-    public void setStatusCode(IStatusCode statusCode) {
-        this.statusCode = statusCode;
-    }
 }

@@ -19,26 +19,24 @@ import java.io.Serializable;
 @RequiredArgsConstructor
 public enum LogTypeEnum {
 
-    /**
-     * 正常日志类型
-     */
-    NORMAL("0", "正常日志"),
+	/**
+	 * 正常日志类型
+	 */
+	NORMAL("0", "正常日志"),
 
-    /**
-     * 错误日志类型
-     */
-    ERROR("1", "错误日志");
+	/**
+	 * 错误日志类型
+	 */
+	ERROR("1", "错误日志");
 
-    /**
-     * 类型
-     */
-    private final String type;
+	/**
+	 * 类型
+	 */
+	private final String type;
 
-    /**
-     * 描述
-     */
-    private final String description;
-
-
+	/**
+	 * 描述
+	 */
+	private final String description;
 
 }

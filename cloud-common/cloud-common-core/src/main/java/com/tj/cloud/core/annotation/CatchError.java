@@ -13,15 +13,16 @@ import java.lang.annotation.*;
  * 若异常为BusException则不会记录日志
  * @version:1.0
  */
-@Target({ElementType.METHOD, ElementType.TYPE})
+@Target({ ElementType.METHOD, ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface CatchError {
 
-    String value() default "";
+	String value() default "";
 
-    /**
-     * 目前全部都是 RestController 请确认是否需要写入 response 形式
-     */
-    boolean write2response() default false;
+	/**
+	 * 目前全部都是 RestController 请确认是否需要写入 response 形式
+	 */
+	boolean write2response() default false;
+
 }

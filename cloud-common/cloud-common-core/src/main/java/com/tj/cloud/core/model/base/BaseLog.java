@@ -4,7 +4,7 @@
  */
 package com.tj.cloud.core.model.base;
 
-import com.tj.cloud.core.model.base.BaseModel;
+import com.tj.cloud.core.model.BaseModel;
 import lombok.*;
 
 import java.io.Serializable;
@@ -20,64 +20,58 @@ import java.io.Serializable;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class BaseLog extends BaseModel implements Serializable {
-    private static final long serialVersionUID = 4564814442231976810L;
+public class BaseLog extends BaseEntity implements Serializable {
 
+	private static final long serialVersionUID = 4564814442231976810L;
 
+	/**
+	 * 日志类型
+	 */
+	private String type;
 
-    /**
-     * 日志类型
-     */
-    private String type;
+	/**
+	 * 日志标题
+	 */
+	private String title;
 
-    /**
-     * 日志标题
-     */
-    private String title;
+	/**
+	 * 操作IP地址
+	 */
+	private String remoteAddr;
 
-    /**
-     * 操作IP地址
-     */
-    private String remoteAddr;
+	/**
+	 * 用户浏览器
+	 */
+	private String userAgent;
 
-    /**
-     * 用户浏览器
-     */
-    private String userAgent;
+	/**
+	 * 请求URI
+	 */
+	private String requestUri;
 
-    /**
-     * 请求URI
-     */
-    private String requestUri;
+	/**
+	 * 操作方式
+	 */
+	private String method;
 
-    /**
-     * 操作方式
-     */
-    private String method;
+	/**
+	 * 操作提交的数据
+	 */
+	private String params;
 
-    /**
-     * 操作提交的数据
-     */
-    private String params;
+	/**
+	 * 执行时间
+	 */
+	private Long time;
 
-    /**
-     * 执行时间
-     */
-    private Long time;
+	/**
+	 * 异常信息
+	 */
+	private String exception;
 
-    /**
-     * 异常信息
-     */
-    private String exception;
-
-    /**
-     * 服务ID
-     */
-    private String serviceId;
-
-
-
-
-
+	/**
+	 * 服务ID
+	 */
+	private String serviceId;
 
 }

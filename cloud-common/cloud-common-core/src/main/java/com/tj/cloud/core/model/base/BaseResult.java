@@ -20,58 +20,57 @@ import lombok.Setter;
 @Setter
 public class BaseResult implements IResult {
 
-    private static final long serialVersionUID = 2508948994192512183L;
-    /**
-     * 本次调用是否成功
-     */
-    @ApiModelProperty("本次调用是否成功")
-    private Boolean isOk;
+	private static final long serialVersionUID = 2508948994192512183L;
 
-    /**
-     * 操作提示信息
-     */
-    @ApiModelProperty("操作提示信息")
-    private String msg;
+	/**
+	 * 本次调用是否成功
+	 */
+	@ApiModelProperty("本次调用是否成功")
+	private Boolean isOk;
 
-    /**
-     * 异常堆栈信息
-     */
-    @ApiModelProperty("异常堆栈信息")
-    private String cause;
+	/**
+	 * 操作提示信息
+	 */
+	@ApiModelProperty("操作提示信息")
+	private String msg;
 
-    /**
-     * 状态码
-     */
-    @ApiModelProperty("状态码")
-    private int code;
+	/**
+	 * 异常堆栈信息
+	 */
+	@ApiModelProperty("异常堆栈信息")
+	private String cause;
 
+	/**
+	 * 状态码
+	 */
+	@ApiModelProperty("状态码")
+	private int code;
 
+	public void setIsOk(Boolean ok) {
+		if (ok) {
+			this.setCode(BaseStatusCodeEnum.SUCCESS.getCode());
+		}
+		isOk = ok;
+	}
 
+	@Override
+	public Boolean getIsOk() {
+		return isOk;
+	}
 
-    public void setIsOk(Boolean ok) {
-        if (ok) {
-            this.setCode(BaseStatusCodeEnum.SUCCESS.getCode());
-        }
-        isOk = ok;
-    }
+	@Override
+	public int getCode() {
+		return code;
+	}
 
-    @Override
-    public Boolean getIsOk() {
-        return isOk;
-    }
+	@Override
+	public String getMsg() {
+		return msg;
+	}
 
-    @Override
-    public int getCode() {
-        return code;
-    }
+	@Override
+	public String getCause() {
+		return cause;
+	}
 
-    @Override
-    public String getMsg() {
-        return msg;
-    }
-
-    @Override
-    public String getCause() {
-        return cause;
-    }
 }

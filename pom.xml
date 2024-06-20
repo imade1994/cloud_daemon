@@ -14,6 +14,10 @@
         <module>cloud-auth</module>
         <module>cloud-gateway</module>
         <module>cloud-upms</module>
+        <module>cloud-test</module>
+        <module>cloud-dynamic</module>
+        <module>cloud-publish</module>
+        <module>cloud-upms/cloud-upms-api</module>
     </modules>
 
 
@@ -25,6 +29,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <mysql.connector.version>8.0.31</mysql.connector.version>
         <spring-boot-admin.version>2.7.9</spring-boot-admin.version>
         <spring.authorization.version>0.4.0</spring.authorization.version>
         <dynamic-ds.version>3.6.0</dynamic-ds.version>
@@ -44,6 +49,13 @@
         <docker.password>password</docker.password>
         <git.commit.plugin>4.9.9</git.commit.plugin>
         <spring.checkstyle.plugin>0.0.34</spring.checkstyle.plugin>
+
+
+        <log4j.version>1.2.17</log4j.version>
+        <log4j-over-slf4j.version>1.7.30</log4j-over-slf4j.version>
+        <apache-log4j.version>2.17.1</apache-log4j.version>
+
+        <logstash-logback-encoder.version>6.5</logstash-logback-encoder.version>
     </properties>
     <!-- 基础版本定义 end -->
 
@@ -72,6 +84,12 @@
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-client</artifactId>
             <version>${spring-boot-admin.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+             <version>${mysql.connector.version}</version>
         </dependency>
         <!--Lombok-->
         <dependency>
@@ -121,6 +139,41 @@
                 <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <!--日志类依赖-->
+            <!--log4j-->
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <!--  2.0 <= Apache log4j2 <= 2.14.1 升级覆盖版本      -->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>${apache-log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${apache-log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-to-slf4j</artifactId>
+                <version>${apache-log4j.version}</version>
+            </dependency>
+            <!-- logback -->
+            <dependency>
+                <groupId>net.logstash.logback</groupId>
+                <artifactId>logstash-logback-encoder</artifactId>
+                <version>${logstash-logback-encoder.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>log4j-over-slf4j</artifactId>
+                <version>${log4j-over-slf4j.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

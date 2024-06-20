@@ -1,0 +1,31 @@
+server:
+  port: 11112
+  tomcat:
+    #最大连接数
+    max-connections: 2000
+    #当tomcat起动的线程数达到最大时，接受排队的请求个数，和max-threads一致
+    accept-count: 2000
+    #后台线程方法的Delay大小:
+    background-processor-delay: 30s
+    connection-timeout: 10000ms
+    threads:
+      #tomcat起动的最大线程数，即同时处理的任务个数
+      max: 2000
+      #最小空闲线程
+      min-spare: 0
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url:  jdbc:mysql://10.10.103.83:2883/test?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+    username: root@qrcode#qrcode
+    password: Hlxd@123456
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  configuration:
+    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+
+logging:
+  level:
+    root: info
+    com.alibaba.nacos.client.naming: warn

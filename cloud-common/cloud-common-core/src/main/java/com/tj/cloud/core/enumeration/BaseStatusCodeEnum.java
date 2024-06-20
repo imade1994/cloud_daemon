@@ -14,107 +14,104 @@ import com.tj.cloud.core.idal.IStatusCode;
  */
 public enum BaseStatusCodeEnum implements IStatusCode {
 
+	/**
+	 * 成功
+	 */
+	SUCCESS(200, "成功"),
 
-    /**
-     * 成功
-     */
-    SUCCESS(200, "成功"),
+	/**
+	 * 权限受限
+	 */
+	FULL_AUTHENTICATION(1401, "Full authentication"),
 
+	/**
+	 * 凭证已过期
+	 */
+	ACCESS_TOKEN_EXPIRE(1401, "Access token expired"),
 
-    /**
-     * 权限受限
-     * */
-    FULL_AUTHENTICATION(1401, "Full authentication"),
+	/**
+	 * 系统异常
+	 */
+	SYSTEM_ERROR(1001, "系统异常"),
 
-    /**
-     * 凭证已过期
-     * */
-    ACCESS_TOKEN_EXPIRE(1401, "Access token expired"),
+	/**
+	 * 业务逻辑异常
+	 */
+	BUSINESS_ERROR(1002, "逻辑异常"),
 
+	/**
+	 * 访问超时
+	 */
+	TIMEOUT(1401, "访问超时"),
 
-    /**
-     * 系统异常
-     */
-    SYSTEM_ERROR(1001, "系统异常"),
+	/**
+	 * 多地登录
+	 */
+	LOGIN_DIFFERENT(1402, "异地登录"),
 
-    /**
-     * 业务逻辑异常
-     */
-    BUSINESS_ERROR(1002, "逻辑异常"),
+	/**
+	 * 当前用户 登录地异常
+	 */
+	LOGIN_UN_SAFETY(1404, "当前用户登录环境异常"),
 
-    /**
-     * 访问超时
-     */
-    TIMEOUT(1401, "访问超时"),
+	/**
+	 * 访问受限
+	 */
+	NO_ACCESS(1403, "访问受限"),
 
-    /**
-     * 多地登录
-     */
-    LOGIN_DIFFERENT(1402, "异地登录"),
+	/**
+	 * 参数校验不通过
+	 */
+	PARAM_ILLEGAL(1100, "参数校验不通过"),
 
+	/**
+	 * 数据已存在
+	 */
+	DATA_EXISTS(1101, "数据已存在"),
 
-    /**
-     * 当前用户 登录地异常
-     */
-    LOGIN_UN_SAFETY(1404, "当前用户登录环境异常"),
+	NOT_SUPPORT(1103, "不支持的方法"),
 
-    /**
-     * 访问受限
-     */
-    NO_ACCESS(1403, "访问受限"),
+	/**
+	 * 远程调用服务失败
+	 */
+	REMOTE_ERROR(1102, "远程调用服务失败"),
 
-    /**
-     * 参数校验不通过
-     */
-    PARAM_ILLEGAL(1100, "参数校验不通过"),
+	SERIAL_NUMBER_EXIST(50001, "流水号已存在"), SERIAL_NUMBER_NOT_EXIST(50002, "流水号不存在");
 
-    /**
-     * 数据已存在
-     */
-    DATA_EXISTS(1101, "数据已存在"),
+	/**
+	 * 编码
+	 */
+	private int code;
 
-    NOT_SUPPORT(1103, "不支持的方法"),
+	/**
+	 * 描述
+	 */
+	private String desc;
 
-    /**
-     * 远程调用服务失败
-     */
-    REMOTE_ERROR(1102, "远程调用服务失败"),
+	/**
+	 * 系统
+	 */
+	private String system;
 
-    SERIAL_NUMBER_EXIST(50001, "流水号已存在"),
-    SERIAL_NUMBER_NOT_EXIST(50002, "流水号不存在");
+	BaseStatusCodeEnum(int code, String description) {
+		this.code = code;
+		this.desc = description;
+		this.system = "tj.cloud";
+	}
 
+	@Override
+	public int getCode() {
+		return this.code;
+	}
 
-    /**
-     * 编码
-     */
-    private int code;
-    /**
-     * 描述
-     */
-    private String desc;
-    /**
-     * 系统
-     */
-    private String system;
+	@Override
+	public String getDesc() {
+		return this.desc;
+	}
 
-    BaseStatusCodeEnum(int code, String description) {
-        this.code = code;
-        this.desc = description;
-        this.system = "tj.cloud";
-    }
+	@Override
+	public String getSystem() {
+		return this.system;
+	}
 
-    @Override
-    public int getCode() {
-        return this.code;
-    }
-
-    @Override
-    public String getDesc() {
-        return this.desc;
-    }
-
-    @Override
-    public String getSystem() {
-        return this.system;
-    }
 }

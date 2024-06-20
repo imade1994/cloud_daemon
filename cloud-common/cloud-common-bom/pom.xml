@@ -32,6 +32,7 @@
         <hutool.version>5.8.10</hutool.version>
         <mica.version>2.7.4</mica.version>
         <sentinel.version>1.8.4</sentinel.version>
+        <knife4j-spring-ui.version>2.0.5</knife4j-spring-ui.version>
     </properties>
 
     <!-- 定义全局jar版本,模块使用需要再次引入但不用写版本号-->
@@ -95,6 +96,12 @@
             <dependency>
                 <groupId>com.tj.cloud</groupId>
                 <artifactId>cloud-common-log</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.tj.cloud</groupId>
+                <artifactId>cloud-dynamic-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -200,6 +207,17 @@
                         <groupId>org.springframework.boot</groupId>
                     </exclusion>
                 </exclusions>
+            </dependency>
+            <!-- swagger -->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-ui</artifactId>
+                <version>${knife4j-spring-ui.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>${knife4j-spring-ui.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

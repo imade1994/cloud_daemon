@@ -14,27 +14,28 @@ import java.io.Serializable;
  */
 public interface IResult extends Serializable {
 
-    /**
-     * 本地调用是否成功
-     * @return
-     */
-    Boolean getIsOk();
+	/**
+	 * 本地调用是否成功
+	 * @return
+	 */
+	Boolean getIsOk();
 
-    /**
-     * 调用状态码
-     * @return
-     */
-    int getCode();
+	/**
+	 * 调用状态码
+	 * @return
+	 */
+	int getCode();
 
-    /**
-     * 调用信息
-     * @return
-     */
-    String getMsg();
+	/**
+	 * 调用信息
+	 * @return
+	 */
+	String getMsg();
 
-    /**
-     * 调用出错堆栈信息
-     * @return
-     */
-    String getCause();
+	/**
+	 * 调用出错堆栈信息
+	 * @return
+	 */
+	String getCause();
+
 }

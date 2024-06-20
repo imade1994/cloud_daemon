@@ -1,0 +1,48 @@
+/*
+ * Copyright (c) 2003-2021 www.hualongxunda.com/ Inc. All rights reserved.
+ * 注意：本内容仅限于深圳华龙讯达信息技术股份有限公司内部传阅，禁止外泄以及用于其他商业目的。
+ */
+package com.tj.cloud.core.util;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
+
+import java.io.PrintWriter;
+import java.io.StringWriter;
+
+/**
+ * @AUTHOR:taoJun
+ * @Date:2024/6/20
+ * @Description:
+ * @version:1.0
+ */
+public class ExceptionUtil {
+
+	/**
+	 * 获取exception的详细错误信息。
+	 */
+	public static String getExceptionMessage(Throwable e) {
+
+		StringWriter sw = new StringWriter();
+		e.printStackTrace(new PrintWriter(sw, true));
+		String str = sw.toString();
+
+		return str;
+	}
+
+	public static String getRootErrorMessage(Exception e) {
+		Throwable root = ExceptionUtils.getRootCause(e);
+		root = (root == null ? e : root);
+
+		if (root == null)
+			return "";
+
+		String msg = root.getMessage();
+
+		if (msg == null)
+			return "null";
+
+		return StringUtils.defaultString(msg);
+	}
+
+}

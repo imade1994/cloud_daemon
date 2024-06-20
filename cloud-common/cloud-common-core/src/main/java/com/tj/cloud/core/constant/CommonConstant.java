@@ -12,41 +12,40 @@ package com.tj.cloud.core.constant;
  */
 public interface CommonConstant {
 
+	String YYYY_CONSTANT = "yyyy-MM-dd HH:mm:ss";
 
-    String YYYY_CONSTANT = "yyyy-MM-dd HH:mm:ss";
+	String INSERT_METHODS_CONSTANT = ".insert";
 
+	String UPDATE_METHODS_CONSTANT = ".update";
 
-    String INSERT_METHODS_CONSTANT = ".insert";
+	String DBCONSTANT_SPECIALKEY = "^";
 
-    String UPDATE_METHODS_CONSTANT = ".update";
+	String DBCONSTANT_NUMBER = "N";
 
-    String DBCONSTANT_SPECIALKEY = "^";
+	String DBCONSTANT_VARCHAR = "V";
 
-    String DBCONSTANT_NUMBER = "N";
+	String DBCONSTANT_DATETIME = "D";
 
-    String DBCONSTANT_VARCHAR = "V";
+	String DBCONSTANT_OPERATION_TAG_EQ = "EQ";
 
-    String DBCONSTANT_DATETIME = "D";
+	String DBCONSTANT_OPERATION_TAG_LK = "LK";
 
+	String DBCONSTANT_OPERATION_TAG_OR = "OR";
 
-    String DBCONSTANT_OPERATION_TAG_EQ = "EQ";
-    String DBCONSTANT_OPERATION_TAG_LK = "LK";
-    String DBCONSTANT_OPERATION_TAG_OR = "OR";
+	String DBCONSTANT_OPERATION_TAG_OR_ = "_OR";
 
-    String DBCONSTANT_OPERATION_TAG_OR_ = "_OR";
+	String DBCONSTANT_OPERATION_TAG_BT = "BT";
 
+	String DBCONSTANT_ORDER_ASC = "ASC";
 
-    String DBCONSTANT_OPERATION_TAG_BT = "BT";
+	String DBCONSTANT_DOWN_LINE = "_";
 
+	String CONSTANT_SPACE = " ";
 
-    String DBCONSTANT_ORDER_ASC = "ASC";
+	String CONSTANT_EMPTY = "";
 
+	String BASE_CONSTANT_COMMA = ",";
 
-    String DBCONSTANT_DOWN_LINE = "_";
+	String BASE_CONSTANT_QUOTE = ".";
 
-
-    String CONSTANT_SPACE = " ";
-
-
-    String CONSTANT_EMPTY = "";
 }

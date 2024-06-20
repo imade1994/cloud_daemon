@@ -12,21 +12,22 @@ package com.tj.cloud.core.idal;
  */
 public interface IStatusCode {
 
-    /**
-     * 状态码
-     * @return
-     */
-    int getCode();
+	/**
+	 * 状态码
+	 * @return
+	 */
+	int getCode();
 
-    /**
-     * 异常信息
-     * @return
-     */
-    String getDesc();
+	/**
+	 * 异常信息
+	 * @return
+	 */
+	String getDesc();
 
-    /**
-     * 系统编码
-     * @return
-     */
-    String getSystem();
+	/**
+	 * 系统编码
+	 * @return
+	 */
+	String getSystem();
+
 }

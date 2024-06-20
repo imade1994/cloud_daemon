@@ -4,7 +4,6 @@
  */
 package com.tj.cloud.core.model.base;
 
-
 import com.tj.cloud.core.idal.IStatusCode;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -20,18 +19,18 @@ import lombok.Data;
 @ApiModel("请求状态类")
 public class BaseStatusCode implements IStatusCode {
 
-    @ApiModelProperty("状态码")
-    private String code;
+	@ApiModelProperty("状态码")
+	private int code;
 
-    public BaseStatusCode(String code, String desc) {
-        this.code = code;
-        this.desc = desc;
-    }
+	public BaseStatusCode(int code, String desc) {
+		this.code = code;
+		this.desc = desc;
+	}
 
-    @ApiModelProperty("来源系统")
-    private String system;
-    @ApiModelProperty("状态描述")
-    private String desc;
+	@ApiModelProperty("来源系统")
+	private String system;
 
+	@ApiModelProperty("状态描述")
+	private String desc;
 
 }

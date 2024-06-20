@@ -14,27 +14,28 @@ import java.util.List;
  */
 public interface Tree<C extends Tree<?>> {
 
-    /**
-     * 获取主键ID
-     * @return
-     */
-    String getId();
+	/**
+	 * 获取主键ID
+	 * @return
+	 */
+	String getId();
 
-    /**
-     * 获取父ID
-     * @return
-     */
-    String getParentId();
+	/**
+	 * 获取父ID
+	 * @return
+	 */
+	String getParentId();
 
-    /**
-     * 获取子对象
-     * @return
-     */
-    List<C> getChildren();
+	/**
+	 * 获取子对象
+	 * @return
+	 */
+	List<C> getChildren();
 
-    /**
-     * 设置子对象
-     * @param list
-     */
-    void setChildren(List<C> list);
+	/**
+	 * 设置子对象
+	 * @param list
+	 */
+	void setChildren(List<C> list);
+
 }
